@@ -53,16 +53,17 @@ def _extract_ie_image(item):
     enc = item.find("enclosure")
     if enc is not None and (enc.get("type", "").startswith("image") or enc.get("url", "")):
         return enc.get("url", "")
-    # 3. First <img src="..."> inside description HTML
+  import re as _re
+
+def extract_image(item):
+    # First <img src="..."> inside description HTML
     desc = item.findtext("description") or ""
-# 3. First <img src="..."> inside description HTML
-desc = item.findtext("description") or ""
 
-m = _re.search(r'<img[^>]+src=["\']([^"\']+)["\']', desc)
-if m:
-    return m.group(1)
+    m = _re.search(r'<img[^>]+src=["\']([^"\']+)["\']', desc)
+    if m:
+        return m.group(1)
 
-return ""
+    return ""
 
 def fetch_indian_express(category="general", max_items=12):
     """
