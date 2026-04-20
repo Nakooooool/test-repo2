@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════
-   Glimpse-web  |  script.js
-   ═══════════════════════════════════════ */
-
 const API = '';           // empty = same origin (Flask serves both)
 let activeCat   = 'general';
 let bookmarks   = [];
